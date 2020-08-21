@@ -1,0 +1,22 @@
+-- 연락처 저장 테이블 생성
+CREATE TABLE CONTACTS (
+    -- 연락처 고유번호
+    CONTACT_SRL NUMBER(10,0),
+    -- 연락처 이름
+    CONTACT_NAME NVARCHAR2(50) NOT NULL,
+    -- 연락처 전화번호
+    PHONE NVARCHAR2(12) UNIQUE NOT NULL,
+    -- 연락처 이메일
+    EMAIL NVARCHAR2(30) NOT NULL,
+    -- 연락처 구분
+    GROUP_SRL NUMBER(10,0) NOT NULL,
+    
+    -- 제약조건: 기본 키 설정
+    CONSTRAINT CONTACTS_CONTACT_SRL_PK
+    PRIMARY KEY(CONTACT_SRL),
+    
+    -- 제약조건: 외래 키 설정
+    CONSTRAINT CONTACTS_GROUP_SRL_FK
+    FOREIGN KEY(GROUP_SRL)
+    REFERENCES GROUPS(GROUP_SRL)
+);
